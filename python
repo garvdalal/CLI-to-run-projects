@@ -1,0 +1,35 @@
+def main():
+    print("Creative Python Projects CLI:")
+    print("1. Word Cloud Generator")
+    print("2. Music Playlist Organizer")
+    print("3. ASCII Art Generator")
+    choice = input("Enter choice (1/2/3): ").strip()
+    if choice == "1":
+        filepath = input("Enter path to text file for word cloud: ").strip()
+        generate_wordcloud(filepath)
+    elif choice == "2":
+        organizer = PlaylistOrganizer()
+        while True:
+            print("\nOptions: add_playlist, add_song, show, exit")
+            cmd = input("Command: ").strip().lower()
+            if cmd == "add_playlist":
+                name = input("Playlist name: ").strip()
+                organizer.add_playlist(name)
+            elif cmd == "add_song":
+                pname = input("Playlist name: ").strip()
+                song = input("Song name: ").strip()
+                organizer.add_song(pname, song)
+            elif cmd == "show":
+                organizer.show_playlists()
+            elif cmd == "exit":
+                break
+            else:
+                print("Unknown command.")
+    elif choice == "3":
+        img_path = input("Enter path to image file: ").strip()
+        ascii_art_from_image(img_path)
+    else:
+        print("Invalid choice.")
+
+if __name__ == "__main__":
+    main()
